@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabook - Tourism Website</title>
+  
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #fffaf7;
+        color: #333;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+      }
+      
+      header {
+        background-color: #ffffff;
+        width: 1170; /* Ensure full width */
+        height: 114px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font: Volkhov bold, sans-serif; 
+        padding: 0 20px; /* Adjust for better spacing */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      
+      .nav {
+        display: flex;
+        font: Volkhov bold, sans-serif; 
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        
+      }
+      
+      .logo {
+        display: flex;
+        font: Volkhov bold, sans-serif; 
+        align-items: center;
+        margin-left: 20%; /* Adjust the margin-left to move the word "Trabook" */
+      }
+
+      .logo h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #222222;
+        margin-right: 10px; /* Adjust margin if needed to move the "Trabook" text */
+      }
+      
+
+      .logo-image {
+        width: 25px;
+        height: 25px;
+        margin-left: 5px; /* Adjust the spacing as needed */
+      }
+      
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-links li {
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      .nav-buttons {
+        display: flex;
+        align-items: center;
+      }
+
+      .login {
+        margin-right: 20px;
+        color: #ff6a34;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      .signup-btn {
+        background-color: #ff6a34; /* Orange color */
+        color: white;
+        border: none;
+        padding: 15px 30px; /* Increase padding for better appearance */
+        border-radius: 12px; /* Rounded corners */
+      
+        font-size: 1rem;
+        font-weight: 500;
+        box-shadow: 0px 8px 15px rgba(255, 106, 52, 0.2); /* Subtle shadow */
+        transition: all 0.3s ease; /* Smooth hover effect */
+      }
+
+      .signup-btn:hover {
+        box-shadow: 0px 12px 20px rgba(255, 106, 52, 0.3); /* Stronger shadow on hover */
+        transform: translateY(-3px); /* Slight hover effect */
+      }
+
+      .hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1170px; /* Limit max width */
+        margin: 60px auto; /* Center content and add margin from top */
+      }
+      
+      .intro-text {
+        width: 521px; /* Based on provided dimensions */
+        height: 486px; /* Based on provided dimensions */
+      }
+      
+      .intro-text h1 {
+        font-size: 3rem;
+        line-height: 1.2;
+        font: 700 64px/70px Volkhov bold, sans-serif; 
+        margin-bottom: 20px;
+      }
+      
+      .intro-text h1 span {
+        color: #ff6a34; /* Highlight color for "journey" */
+      }
+      
+      .intro-text p {
+        font-size: 1.2rem;
+        max-width: 496px;
+        color: #666;
+        font: 400 20px/40px Poppins, sans-serif;
+        margin-bottom: 30px;
+      }
+      
+      .discover-btn {
+        background-color: transparent;
+        color: #ff6a34;
+        border: 2px solid #ff6a34;
+        padding: 10px 25px;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .discover-btn:hover {
+        background-color: #ff6a34;
+        color: white;
+      }
+      
+      .hero-image-container {
+        position: relative;
+        width: 450px; /* Set to exact width */
+        height: 530px; /* Set to exact height */
+      }
+      
+      .hero-image {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: auto;
+      }
+      
+      .orange-background {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        width: 450px; /* Adjust to fit the design */
+        height: auto;
+      }
+      
+      .airplane-paths {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 450px;
+        height: 191px;
+        z-index: 1;
+      }
+      
+      .badge {
+        position: absolute;
+        background-color: white;
+        padding: 10px 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-size: 1rem;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+      }
+      
+      .badge img.icon {
+        aspect-ratio: 1;
+        object-fit: contain;
+        object-position: center;
+        width: 32px;
+        height: 32px;
+      }
+      
+      .best-tour-awards {
+        border-radius: 12px;
+        background-color: #fff;
+        box-shadow: -8px 8px 40px rgba(0, 0, 0, 0.05);
+        padding: 9px 16px;
+        max-width: 150px;
+        height: 66px;
+        bottom: 80%;
+        left: -15%;
+        color: var(--Color-B-1, #444);
+        font: 500 16px Poppins, sans-serif;
+      }
+      
+      .explore {
+        top: 50%;
+        border-radius: 10px;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+        right: -15px;
+        width: 173px;
+        height: 74px;
+      }
+      
+      .customer-review {
+        top: 65%;
+        width: 192px;
+        height: 68px;
+      }
+      
+      .search-bar-wrapper {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center;
+        margin-top: 50px; /* Add more margin for spacing */
+      }
+      
+      .search-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 841px; /* The width based on the provided dimension */
+        height: 124px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      
+      .search-option {
+        text-align: left;
+        flex: 1;
+      }
+      
+      .search-option label {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+        display: block;
+      }
+      
+      .search-option p {
+        font-size: 0.9rem;
+        color: #888;
+        margin-top: 5px;
+      }
+      
+      .explore-now-btn {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-shrink: 0;
+      }
+      
+      .explore-now-btn img {
+        width: auto;
+        height: 48px; /* Adjust the height as per the size of the image */
+        
+      }
+    </style>
+</head>
+<body>
+  <header>
+      <div class="nav">
+        <div class="logo">
+          <h1>Trabook</h1>
+         <img src="Vector (2).png" alt="Logo Image" class="logo-image">
+        </div>
+        <ul class="nav-links">
+          <li><a >Home</a></li>
+          <li><a >About</a></li>
+          <li><a >Destination</a></li>
+          <li><a >Tour</a></li>
+          <li><a >Blog</a></li>
+        </ul>
+        <div class="nav-buttons">
+          <a class="login">Login</a>
+          <button class="signup-btn">Sign up</button>
+        </div>
+      </div>
+    </header>
+<main>
+  <section class="hero">
+      <section class="intro-text">
+          <h1>Get started your exciting <span>journey</span> with us.</h1>
+          <p>A team of experienced tourism professionals will provide you with the best advice and tips for your desired place.</p>
+          <button class="discover-btn">Discover Now</button>
+        </section>
+      <div class="hero-image-container">
+        <img src="Element (1).png" alt="Airplane Paths" class="airplane-paths">
+        
+        <div class="badge best-tour-awards">
+          <img src="trophy.png" alt="Trophy Icon" class="icon">
+          Best Tour Awards
+        </div>
+        
+        <div class="badge explore">
+          <img src="navigation.png" alt="Location Icon" class="icon">
+          Explore Every corner of the world with us
+        </div>
+        
+        <div class="badge customer-review">
+          <img src="star.png" alt="Star Icon" class="icon">
+          27K Customer Reviews
+        </div>
+        
+        <img src="tourist.png" alt="Traveler Image" class="hero-image">
+        <img src="Ellipse 4.png" alt="Orange Ellipse Background" class="orange-background">
+      </div>
+    </section>
+
+  <div class="search-bar-wrapper">
+    <section class="search-bar">
+        <div class="search-option">
+          <label for="location">Location <span>▼</span></label>
+          
+          <p>Where are you going</p>
+        </div>
+      
+        <div class="search-option">
+          <label for="date">Date <span>▼</span></label>
+          <p>When you will go</p>
+        </div>
+      
+        <div class="search-option">
+          <label for="guest">Guest <span>▼</span></label>
+          <p>Number of guest</p>
+        </div>
+      
+        <!-- Use the Explore Now Button Image -->
+        <div class="explore-now-btn">
+          <img src="Explore Btn.png" alt="Explore Now Button">
+        </div>
+      </section>
+  </div>
+</main>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<style>
+    .things-you-need {
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .bg-section {
+      background-color: #f7f8fc;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 80px;
+    }
+    
+    .content-wrapper {
+      display: flex;
+      margin-bottom: -24px;
+      width: 1170px;
+      max-width: 100%;
+      flex-direction: column;
+    }
+    
+    .text-content {
+      align-self: flex-end;
+      margin-right: 78px;
+      width: 767px;
+      max-width: 100%;
+    }
+    
+    .content-row {
+      gap: 10px;
+      display: flex;
+    }
+    
+    .text-column {
+      display: flex;
+      flex-direction: column;
+      line-height: normal;
+      width: 74%;
+    }
+    
+    .text-container {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+    }
+    
+    .title {
+      color: #fa7436;
+      font: 700 48px/1 Volkhov, bold;
+      text-align: center;
+      
+    }
+    
+    .description {
+      color: #666;
+      text-align: center;
+      align-self: center;
+      margin-top: 24px;
+      font: 400 18px/32px Poppins, regular;
+    }
+    
+    .image-column {
+      display: flex;
+      flex-direction: column;
+      line-height: normal;
+      width: 26%;
+      margin-left: 20px;
+    }
+    
+    .image-wrapper {
+      aspect-ratio: 1.37;
+      width: 180px;
+      max-width: 100%;
+    }
+    
+    .image-grid {
+      margin-top: 64px;
+    }
+    
+    .image-row {
+      gap: 10px;
+      display: flex;
+    }
+    
+    .image-column1,
+    .image-column-2,
+    .image-column-3 {
+      display: flex;
+      flex-direction: column;
+      line-height: normal;
+      width: 33%;
+    }
+    
+    .image-column-2,
+    .image-column-3 {
+      margin-left: 20px;
+    }
+    
+    .grid-image {
+      aspect-ratio: 1.33;
+      object-fit: contain;
+      object-position: center;
+      width: 100%;
+      flex-grow: 1;
+    }
+    
+    .grid-image-3 {
+      border-radius: 8px;
+    }
+    
+    @media (max-width: 991px) {
+      .bg-section {
+        max-width: 100%;
+        padding: 100px 20px;
+      }
+    
+      .content-wrapper {
+        margin-bottom: 10px;
+      }
+    
+      .text-content {
+        margin-right: 10px;
+      }
+    
+      .content-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+    
+      .text-column,
+      .image-column {
+        width: 100%;
+      }
+    
+      .text-container {
+        max-width: 100%;
+        margin-top: 40px;
+      }
+    
+      .title {
+        max-width: 100%;
+        font-size: 40px;
+      }
+    
+      .description {
+        max-width: 100%;
+      }
+    
+      .image-wrapper {
+        margin-top: 40px;
+      }
+    
+      .image-grid {
+        max-width: 100%;
+        margin-top: 40px;
+      }
+    
+      .image-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+    
+      .image-column-1,
+      .image-column-2,
+      .image-column-3 {
+        width: 100%;
+        margin-left: 0;
+      }
+    
+      .grid-image,
+      .grid-image-3 {
+        margin-top: 30px;
+      }
+    }
+    </style>
+    
+    <section class="things-you-need">
+      <div class="bg-section">
+        <div class="content-wrapper">
+          <div class="text-content">
+            <div class="content-row">
+              <div class="text-column">
+                <div class="text-container">
+                  <h2 class="title"> <span style="color:#222222;">Things you need</span> <span style="color: #fa7436;">to do</span></h2>
+                  <p class="description">We ensure that you'll embark on a perfectly planned, </br>safe vacation at a price you can afford.</p>
+                </div>
+              </div>
+              <div class="image-column">
+                <img loading="lazy" src="Element (2).png" class="image-wrapper" alt="Illustration related to vacation planning" />
+              </div>
+            </div>
+          </div>
+          <div class="image-grid">
+            <div class="image-row">
+              <div class="image-column-1">
+                <img loading="lazy" src="Sign Up.png" class="grid-image" alt="Vacation activity or destination 1" />
+              </div>
+              <div class="image-column-2">
+                <img loading="lazy" src="Money.png" class="grid-image" alt="Vacation activity or destination 2" />
+              </div>
+              <div class="image-column-3">
+                <img loading="lazy" src="Travel.png" class="grid-image grid-image-3" alt="Vacation activity or destination 3" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <style>
+        .exclusive-deals { border-radius: 0; display: flex; flex-direction: column; }
+        .deals-bg { background-color: #fefcfb; display: flex; width: 100%; flex-direction: column; align-items: center; justify-content: center; padding: 120px 80px; }
+        @media (max-width: 991px) { .deals-bg { max-width: 100%; padding: 100px 20px; } }
+        .deals-container { display: flex; margin-bottom: -24px; width: 1170px; max-width: 100%; flex-direction: column; align-items: center; }
+        @media (max-width: 991px) { .deals-container { margin-bottom: 10px; } }
+        .deals-title { color: #fa7436; font: 700 48px/1 Volkhov, bold; }
+        @media (max-width: 991px) { .deals-title { max-width: 100%; font-size: 40px; } }
+        .deals-description { color: #666; text-align: center; margin-top: 24px; width: 433px; font: 400 18px/32px Poppins, Reqular; }
+        .deals-grid { align-self: stretch; margin-top: 64px; }
+        @media (max-width: 991px) { .deals-grid { max-width: 100%; margin-top: 40px; } }
+        .deals-row { gap: 20px; display: flex; }
+        @media (max-width: 991px) { .deals-row { flex-direction: column; align-items: stretch; gap: 0; } }
+        .deal-card { display: flex; flex-direction: column; line-height: normal; width: 25%; margin-left: 0; }
+        @media (max-width: 991px) { .deal-card { width: 100%; } }
+        .card-content { border-radius: 8px; background-color: #fefcfb; display: flex; width: 100%; padding-bottom: 32px; flex-direction: column; font-family: Poppins, Medium; text-align: center; margin: 0 auto; border: 2px solid rgba(102, 102, 102, 0.08); }
+        @media (max-width: 991px) { .card-content { margin-top: 30px; } }
+        .card-image { aspect-ratio: 0.93; object-fit: contain; object-position: center; width: 100%; border-radius: 8px; }
+        .card-header { display: flex; gap: 20px; justify-content: space-between; margin: 32px 16px 0; }
+        @media (max-width: 991px) { .card-header { margin: 0 10px; } }
+        .destination-name { color: #222; font-size: 24px; font-weight: 500; line-height: 1; }
+        .rating-container { align-self: start; display: flex; gap: 8px; font-size: 16px; color: #666; font-weight: 400; }
+        .rating-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 16px; border-radius: 8px; margin: auto 0; }
+        .card-footer { display: flex; gap: 20px; font-size: 16px; justify-content: space-between; margin: 18px 16px 0; }
+        @media (max-width: 991px) { .card-footer { margin: 0 10px; } }
+        .location-container { align-self: start; display: flex; gap: 8px; color: #666; font-weight: 400; line-height: 1; }
+        .location-icon { aspect-ratio: 0.81; object-fit: contain; object-position: center; width: 13px; fill: #999; margin: auto 0; }
+        .price-container { display: flex; gap: 16px; }
+        .original-price { color: #999; font-weight: 500; margin: auto 0; }
+        .discounted-price { border-radius: 8px; background-color: #ffe7db; color: #fa7436; font-weight: 600; padding: 2px 6px; }
+        @media (max-width: 991px) { .discounted-price { white-space: initial; } }
+        .featured-card { border-radius: 10px; background-color: #fefcfb; box-shadow: 0 16px 80px rgba(254, 147, 94, 0.2); display: flex; width: 100%; padding-bottom: 32px; flex-direction: column; font-family: Poppins, Medium; margin: 0 auto; }
+        @media (max-width: 991px) { .featured-card { margin-top: 30px; } }
+        .featured-image-container { display: flex; flex-direction: column; border-radius: 10px 10px 0 0; position: relative; aspect-ratio: 0.931; width: 100%; font-size: 18px; color: #fff; font-weight: 500; line-height: 32px; justify-content: center; padding: 1px 0; }
+        .featured-image { position: absolute; inset: 0; height: 100%; width: 100%; object-fit: cover; object-position: center; }
+        .hover-overlay { position: relative; border-radius: 8px; background-color: rgba(0, 0, 0, 0.4); z-index: 10; display: flex; flex-direction: column; align-items: center; padding: 192px 54px 48px; }
+        @media (max-width: 991px) { .hover-overlay { padding: 100px 20px 0; } }
+        .book-now-btn { border-radius: 8px; background: #fa7436; width: 132px; max-width: 100%; padding: 9px 22px; }
+        @media (max-width: 991px) { .book-now-btn { padding: 0 20px; } }
+        .pagination-dots { aspect-ratio: 2.6; object-fit: contain; object-position: center; width: 104px; margin-top: 48px; max-width: 100%; }
+        @media (max-width: 991px) { .pagination-dots { margin-top: 40px; } }
+        .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+        </style>
+        
+        <section class="exclusive-deals">
+          <div class="deals-bg">
+            <div class="deals-container">
+              <h2 class="deals-title"> <span style="color: #0a0a0a;"> Exclusive </span> <span style="color: #fa7436;">deals & discounts</span></h2>
+              <p class="deals-description">Discover our fantastic early booking discounts & start planning your journey.</p>
+              <div class="deals-grid">
+                <div class="deals-row">
+                  <article class="deal-card">
+                    <div class="card-content">
+                      <img src="Deal 1.png" alt="Madrid cityscape" class="card-image" />
+                      <div class="card-header">
+                        <h3 class="destination-name">Madrid</h3>
+                        <div class="rating-container">
+                          <img src="star.png" alt="Rating star" class="rating-icon" />
+                          <span>4.8</span>
+                        </div>
+                      </div>
+                      <div class="card-footer">
+                        <div class="location-container">
+                          <img src="Vector (3).png" alt="Location pin" class="location-icon" />
+                          <span>Spain</span>
+                        </div>
+                        <div class="price-container">
+                          <span class="original-price">$950</span>
+                          <span class="discounted-price">$850</span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="deal-card">
+                    <div class="featured-card">
+                      <div class="featured-image-container">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/56346cb3a356f60fc14cb1cbc9b3bc0318be24ea6faf7b4c5b8f3206c1fb44bb?placeholderIfAbsent=true&apiKey=a311e37a7d0b4899ad613ce1a7513e53" alt="Firenze cityscape" class="featured-image" />
+                        <div class="hover-overlay">
+                          <button class="book-now-btn">Book Now</button>
+                        </div>
+                      </div>
+                      <div class="card-header">
+                        <h3 class="destination-name">Firenze</h3>
+                        <div class="rating-container">
+                          <img src="star.png" alt="Rating star" class="rating-icon" />
+                          <span>4.5</span>
+                        </div>
+                      </div>
+                      <div class="card-footer">
+                        <div class="location-container">
+                          <img src="Vector (3).png" alt="Location pin" class="location-icon" />
+                          <span>Italy</span>
+                        </div>
+                        <div class="price-container">
+                          <span class="original-price">$850</span>
+                          <span class="discounted-price">$750</span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="deal-card">
+                    <div class="card-content">
+                      <img src="Deal 2.png" alt="Paris cityscape" class="card-image" />
+                      <div class="card-header">
+                        <h3 class="destination-name">Paris</h3>
+                        <div class="rating-container">
+                          <img src="star.png" alt="Rating star" class="rating-icon" />
+                          <span>4.4</span>
+                        </div>
+                      </div>
+                      <div class="card-footer">
+                        <div class="location-container">
+                          <img src="Vector (3).png" alt="Location pin" class="location-icon" />
+                          <span>France</span>
+                        </div>
+                        <div class="price-container">
+                          <span class="original-price">$699</span>
+                          <span class="discounted-price">$599</span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="deal-card">
+                    <div class="card-content">
+                      <img src="Deal 3.png" alt="London cityscape" class="card-image" />
+                      <div class="card-header">
+                        <h3 class="destination-name">London</h3>
+                        <div class="rating-container">
+                          <img src="star.png" alt="Rating star" class="rating-icon" />
+                          <span>4.8</span>
+                        </div>
+                      </div>
+                      <div class="card-footer">
+                        <div class="location-container">
+                          <img src="Vector (3).png" alt="Location pin" class="location-icon" />
+                          <span>UK</span>
+                        </div>
+                        <div class="price-container">
+                          <span class="original-price">$850</span>
+                          <span class="discounted-price">$850</span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <img src="Slider-btn.png" alt="Pagination dots" class="pagination-dots" />
+            </div>
+          </div>
+        </section>
+
+        <style>
+            .testimonial-section {
+              background-color: #f7f8fc;
+              padding: 56px 70px 120px;
+              display: flex;
+              justify-content: center;
+            }
+            
+            .testimonial-container {
+              width: 100%;
+              max-width: 1225px;
+              display: flex;
+              gap: 20px;
+            }
+            
+            .testimonial-content {
+              width: 36%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+            }
+            
+            .testimonial-heading {
+              color: #fa7436;
+              font: 700 48px/54px Volkhov, sans-serif;
+              text-transform: lowercase;
+            }
+            
+            .testimonial-subheading {
+              color: #666;
+              font: 400 16px/32px Roboto, sans-serif;
+              margin-top: 24px;
+            }
+            
+            .testimonial-icon {
+              width: 112px;
+              margin-top: 32px;
+            }
+            
+            .testimonial-cards {
+              width: 64%;
+              display: flex;
+              flex-grow: 1;
+              gap: 19px;
+              flex-wrap: wrap;
+            }
+            
+            .avatar {
+              width: 68px;
+              border-radius: 50%;
+              align-self: flex-start;
+              margin-top: 64px;
+            }
+            
+            .testimonial-card-wrapper {
+              display: flex;
+              flex-direction: column;
+              flex-grow: 1;
+              flex-basis: 0;
+            }
+            
+            .testimonial-decoration {
+              width: 169px;
+              align-self: flex-end;
+            }
+            
+            .testimonial-card {
+              border-radius: 10px;
+              box-shadow: 0 10px 30px rgba(34, 34, 34, 0.35);
+              border: 2px solid rgba(102, 102, 102, 0.08);
+              padding: 0 48px 22px 0;
+              margin-top: -90px;
+              background-color: #fff;
+              z-index: 10;
+            }
+            
+            .testimonial-text {
+              padding: 36px 34px;
+              font-size: 16px;
+              line-height: 32px;
+            }
+            
+            .testimonial-quote {
+              color: #444;
+              font-family: Poppins, sans-serif;
+              font-weight: 500;
+            }
+            
+            .testimonial-author {
+              margin-left: 34px;
+              font-family: Poppins, sans-serif;
+            }
+            
+            .author-name {
+              color: #222;
+              font-size: 18px;
+              font-weight: 600;
+              opacity: 0.5;
+            }
+            
+            .author-title {
+              color: #666;
+              font-size: 14px;
+              font-weight: 500;
+              opacity: 0.5;
+              margin-top: 6px;
+            }
+            
+            @media (max-width: 991px) {
+              .testimonial-section {
+                padding: 0 20px 100px;
+              }
+            
+              .testimonial-container {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+              }
+            
+              .testimonial-content,
+              .testimonial-cards {
+                width: 100%;
+                margin-top: 40px;
+              }
+            
+              .testimonial-heading {
+                font-size: 40px;
+                line-height: 50px;
+              }
+            
+              .avatar {
+                margin-top: 40px;
+              }
+            
+              .testimonial-card {
+                padding-right: 20px;
+              }
+            
+              .testimonial-text {
+                padding-left: 20px;
+              }
+            
+              .testimonial-author {
+                margin-left: 10px;
+              }
+            }
+            </style>
+            
+            <section class="testimonial-section">
+              <div class="testimonial-container">
+                <div class="testimonial-content">
+                  <h2 class="testimonial-heading">
+                    What people say <br />
+                    <span>about Us.</span>
+                  </h2>
+                  <p class="testimonial-subheading">
+                    Our Clients send us bunch of smilies with our services and we love them.
+                  </p>
+                  <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d17f4d945333a3f00cab1b2751d7f607524795e3bf18efbd47c2082176cb07b1?placeholderIfAbsent=true&apiKey=a311e37a7d0b4899ad613ce1a7513e53" alt="Decorative icon" class="testimonial-icon" />
+                </div>
+                <div class="testimonial-cards">
+                  <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/51da7ac4c842eb7e85a32adbca96fb7362640712da3dfa0c5ee755c69e49ddb4?placeholderIfAbsent=true&apiKey=a311e37a7d0b4899ad613ce1a7513e53" alt="Client avatar" class="avatar" />
+                  <div class="testimonial-card-wrapper">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/93d7e34c4db836eb566be0c267a530849f548adb9284e1d904e132e1ddada57f?placeholderIfAbsent=true&apiKey=a311e37a7d0b4899ad613ce1a7513e53" alt="" class="testimonial-decoration" />
+                    <div class="testimonial-card">
+                      <div class="testimonial-text">
+                        <p class="testimonial-quote">
+                          "On the Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no."
+                        </p>
+                      </div>
+                      <div class="testimonial-author">
+                        <p class="author-name">Chris Thomas</p>
+                        <p class="author-title">CEO of Red Button</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+
+
+        
+ 
+            <style>
+                /* General reset */
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+                
+                /* Main container styles */
+                .vacation-bg {
+                    background-color: #fefcfb;
+                    display: flex;
+                    width: 100%;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 120px 80px;
+                }
+                
+                @media (max-width: 991px) {
+                    .vacation-bg {
+                        max-width: 100%;
+                        padding: 100px 20px;
+                    }
+                }
+                
+                /* Vacation plan container */
+                .vacation-content {
+                    display: flex;
+                    flex-direction: column;
+                    width: 1170px;
+                    max-width: 100%;
+                    margin-bottom: -24px;
+                }
+                
+                @media (max-width: 991px) {
+                    .vacation-content {
+                        margin-bottom: 10px;
+                    }
+                }
+                
+                /* Title and header styling */
+                .vacation-header {
+                    align-self: center;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 60%;
+                    padding: 0; /* Remove any padding */
+                    background-color: transparent; /* Make background transparent */
+                    box-shadow: none; /* Remove any shadows */
+                    border: none; /* Remove any borders if present */
+                    margin: 0;
+                }
+                
+                
+                .vacation-title-container {
+                    display: flex;
+                    align-self: center;
+                    gap: 20px;
+                }
+                
+                @media (max-width: 991px) {
+                    .vacation-title-container {
+                        flex-direction: column;
+                        align-items: stretch;
+                        gap: 0;
+                    }
+                }
+                
+                .vacation-title-column {
+                    display: flex;
+                    flex-direction: column;
+                    line-height: normal;
+                    width: 83%;
+                    margin-left: 0;
+                }
+                
+                @media (max-width: 991px) {
+                    .vacation-title-column {
+                        width: 100%;
+                    }
+                }
+                
+                @media (max-width: 991px) {
+                    .vacation-title-content {
+                        max-width: 100%;
+                        margin-top: 10px;
+                    }
+                }
+                
+                .vacation-title {
+                    color: #fa7436;
+                    font: 700 48px/1 Volkhov, Bold;
+                    margin: 0;
+                    text-align: center;
+                }
+                
+                .vacation-description {
+                    color: #666;
+                    text-align: center;
+                    margin-top: 24px;
+                    font: 400 18px/32px Poppins, regular;
+                }
+                
+                @media (max-width: 991px) {
+                    .vacation-description {
+                        max-width: 100%;
+                    }
+                }
+                .slider-buttons {
+                    margin-top: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                
+                .left-arrow, .right-arrow {
+                    width: 40px;
+                    height: auto;
+                    cursor: pointer;
+                    margin: 0 10px;
+                }
+                
+                /* Vacation image and decoration styling */
+                .vacation-image-column {
+                    display: flex;
+                    flex-direction: column;
+                    line-height: normal;
+                    width: 17%;
+                    margin-bottom: 20px;
+                    margin-left: -15px;
+                }
+                
+                @media (max-width: 991px) {
+                    .vacation-image-column {
+                        width: 100%;
+                    }
+                }
+                
+                .vacation-image {
+                    aspect-ratio: 1.31;
+                    object-fit: contain;
+                    object-position: center;
+                    width: 369px;
+                    margin-bottom: -80px;
+                    max-width: 100%;
+                }
+                
+                @media (max-width: 991px) {
+                    .vacation-image {
+                        margin-top: 31px;
+                    }
+                }
+                
+                .vacation-decoration {
+                    aspect-ratio: 2.8;
+                    object-fit: contain;
+                    object-position: center;
+                    width: 112px;
+                    align-self: flex-end;
+                    max-width: 100%;
+                }
+                
+                /* Destination Cards */
+                .vacation-destinations {
+                    margin-top: 24px;
+                }
+                
+                @media (max-width: 991px) {
+                    .vacation-destinations {
+                        max-width: 100%;
+                    }
+                }
+                
+                .destination-container {
+                    display: flex;
+                    gap: 20px;
+                    justify-content: space-around;
+                }
+                
+                @media (max-width: 991px) {
+                    .destination-container {
+                        flex-direction: column;
+                        align-items: stretch;
+                        gap: 0;
+                    }
+                }
+                
+                /* Individual destination card */
+                .destination-column {
+                    display: flex;
+                    flex-direction: column;
+                    line-height: normal;
+                    width: 33%;
+                    margin-left: 0;
+                }
+                
+                @media (max-width: 991px) {
+                    .destination-column {
+                        width: 100%;
+                    }
+                }
+                
+                /* Card image */
+                .destination-image {
+                    object-fit: cover;
+                    object-position: center;
+                    width: 370px; /* Width as per provided dimension */
+                    height: 447px; /* Height as per provided dimension */
+                    border-radius: 16px;
+                    flex-grow: 1;
+                }
+                
+                @media (max-width: 991px) {
+                    .destination-image {
+                        margin-top: 30px;
+                    }
+                }
+                
+                /* Card content */
+                .destination-card {
+                    background-color: #fefcfb;
+                    box-shadow: 0 16px 80px rgba(254, 147, 94, 0.2);
+                    border-radius: 16px;
+                    display: flex;
+                    width: 100%;
+                    flex-direction: column;
+                    align-items: center;
+                    margin: 0 auto;
+                    padding: 0 1px 24px;
+                }
+                
+                @media (max-width: 991px) {
+                    .destination-card {
+                        margin-top: 30px;
+                    }
+                }
+                
+                .destination-info {
+                    display: flex;
+                    margin-top: 24px;
+                    width: 319px;
+                    max-width: 100%;
+                    gap: 20px;
+                    font-size: 24px;
+                    white-space: nowrap;
+                    justify-content: space-between;
+                }
+                
+                @media (max-width: 991px) {
+                    .destination-info {
+                        white-space: initial;
+                    }
+                }
+                
+                .destination-name {
+                    color: #222;
+                    font-weight: 500;
+                }
+                
+                .destination-price {
+                    color: #fa7436;
+                    font-weight: 600;
+                }
+                
+                .destination-details {
+                    display: flex;
+                    margin-top: 16px;
+                    width: 319px;
+                    max-width: 100%;
+                    gap: 20px;
+                    font-size: 16px;
+                    color: #666;
+                    justify-content: space-between;
+                }
+                
+                .trip-duration {
+                    display: flex;
+                    gap: 18px;
+                    font-weight: 500;
+                }
+                
+                .duration-icon {
+                    width: 19px;
+                    aspect-ratio: 1.19;
+                    object-fit: contain;
+                    object-position: center;
+                    margin: auto 0;
+                }
+                
+                .rating {
+                    display: flex;
+                    gap: 9px;
+                    font-weight: 400;
+                    white-space: nowrap;
+                    text-align: center;
+                }
+                
+                @media (max-width: 991px) {
+                    .rating {
+                        white-space: initial;
+                    }
+                }
+                
+                .rating-icon {
+                    width: 16px;
+                    aspect-ratio: 1;
+                    object-fit: contain;
+                    object-position: center;
+                    border-radius: 10px;
+                    margin: auto 0;
+                }
+                
+                /* Alternative card styles */
+                .destination-card-alt {
+                    background-color: #fff;
+                    border: 2px solid rgba(102, 102, 102, 0.08);
+                    border-radius: 16px;
+                    display: flex;
+                    width: 100%;
+                    flex-direction: column;
+                    margin: 0 auto;
+                    padding: 0 1px 24px;
+                }
+                
+                @media (max-width: 991px) {
+                    .destination-card-alt {
+                        margin-top: 30px;
+                    }
+                }
+                
+                .destination-info-alt {
+                    display: flex;
+                    gap: 20px;
+                    font-size: 24px;
+                    white-space: nowrap;
+                    justify-content: space-between;
+                    margin: 24px 24px 0 25px;
+                }
+                
+                @media (max-width: 991px) {
+                    .destination-info-alt {
+                        white-space: initial;
+                        margin: 0 10px;
+                    }
+                }
+                
+                .destination-details-alt {
+                    display: flex;
+                    margin-top: 16px;
+                    width: 317px;
+                    max-width: 100%;
+                    gap: 20px;
+                    color: #666;
+                    justify-content: space-between;
+                }
+                
+                /* Visually hidden (accessibility) */
+                .visually-hidden {
+                    position: absolute;
+                    width: 1px;
+                    height: 1px;
+                    padding: 0;
+                    margin: -1px;
+                    overflow: hidden;
+                    clip: rect(0, 0, 0, 0);
+                    white-space: nowrap;
+                    border: 0;
+                }
+                </style>
+
+<section class="vacation-plan">
+  <div class="vacation-bg">
+    <div class="vacation-content">
+      <header class="vacation-header">
+        <div class="vacation-title-wrapper">
+          <div class="vacation-title-container">
+            <div class="vacation-title-column">
+              <div class="vacation-title-content">
+                <h2 class="vacation-title"> <span style="color: #222222;"> Best</span> <span style="color: #fa7436;"> vacation plan</span></h2>
+                <p class="vacation-description">Plan your perfect vacation with our travel agency. Choose </br>among hundreds of all-inclusive offers!</p>
+              </div>
+            </div>
+            <div class="vacation-image-column">
+              <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce5140fb5a1ddca194e2b4072d029455882127b6055df35e4758bfc68981804d?placeholderIfAbsent=true&apiKey=a311e37a7d0b4899ad613ce1a7513e53" class="vacation-image" alt="Vacation planning illustration" />
+            </div>
+          </div>
+        </div>
+        <img loading="lazy" src="Slider-btn.png" class="vacation-decoration" alt="" />
+      </header>
+      <div class="vacation-destinations">
+        <div class="destination-container">
+          <div class="destination-column">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/aecc4cd64a8bb5fb4158911b0ae0606b1d8da4519a5a83732fe75e8d3c0940dd?placeholderIfAbsent=true&apiKey=a311e37a7d0b4899ad613ce1a7513e53" class="destination-image" alt="Scenic vacation destination" />
+          </div>
+          <div class="destination-column">
+            <article class="destination-card">
+              <img loading="lazy" src="Vacation2.png" class="destination-photo" alt="London cityscape" />
+              <div class="destination-info">
+                <h3 class="destination-name">London, UK</h3>
+                <p class="destination-price">$2,42k</p>
+              </div>
+              <div class="destination-details">
+                <div class="trip-duration">
+                  <img loading="lazy" src="Navigation.png" class="duration-icon" alt="" />
+                  <span>07 Days Trip</span>
+                </div>
+                <div class="rating">
+                  <img loading="lazy" src="star.png" class="rating-icon" alt="" />
+                  <span>4.7</span>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="destination-column">
+            <article class="destination-card-alt">
+              <img loading="lazy" src="Vacation 1.png" class="destination-photo" alt="Osaka cityscape" />
+              <div class="destination-info-alt">
+                <h3 class="destination-name">Osaka, Japan</h3>
+                <p class="destination-price">$5,42k</p>
+              </div>
+              <div class="destination-details-alt">
+                <div class="trip-duration">
+                  <img loading="lazy" src="Navigation.png" class="duration-icon" alt="" />
+                  <span>10 Days Trip</span>
+                </div>
+                <div class="rating">
+                  <img loading="lazy" src="star.png" class="rating-icon" alt="" />
+                  <span>4.8</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>   
+
+
+
+
+<style>
+    .blog-section {
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .blog-background {
+      background-color: #fefcfb;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 80px;
+    }
+    
+    @media (max-width: 991px) {
+      .blog-background {
+        max-width: 100%;
+        padding: 100px 20px;
+      }
+    }
+    
+    .blog-content {
+      display: flex;
+      margin-bottom: -24px;
+      width: 1170px;
+      max-width: 100%;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    @media (max-width: 991px) {
+      .blog-content {
+        margin-bottom: 10px;
+      }
+    }
+    
+    .blog-title {
+      color: #000;
+      font: 700 48px/1 Volkhov,Bold;
+    }
+    
+    @media (max-width: 991px) {
+      .blog-title {
+        max-width: 100%;
+        font-size: 40px;
+      }
+    }
+    
+    .blog-grid {
+      align-self: stretch;
+      margin-top: 64px;
+    }
+    
+    @media (max-width: 991px) {
+      .blog-grid {
+        max-width: 100%;
+        margin-top: 40px;
+      }
+    }
+    
+    .blog-row {
+      gap: 20px;
+      display: flex;
+    }
+    
+    @media (max-width: 991px) {
+      .blog-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+    }
+    
+    .blog-column {
+      display: flex;
+      flex-direction: column;
+      line-height: normal;
+      width: 25%;
+      margin-left: 0;
+    }
+    
+    @media (max-width: 270px) {
+      .blog-column {
+        width: 100%;
+      }
+    }
+    
+    .blog-card {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      align-items: start;
+    }
+    
+    @media (max-width: 991px) {
+      .blog-card {
+        margin-top: 30px;
+      }
+    }
+    
+    .blog-image {
+      aspect-ratio: 1;
+      object-fit: contain;
+      object-position: center;
+      width: 100%;
+      border-radius: 8px;
+      align-self: stretch;
+    }
+    
+    .blog-card-title {
+      color: #222;
+      margin-top: 24px;
+      font: 500 18px Poppins,medium;
+    }
+    
+    .blog-date {
+      color: #999;
+      margin-top: 10px;
+      font: 400 16px/2 Inter,regular;
+    }
+    
+    .blog-nav-dots {
+      aspect-ratio: 3.86;
+      object-fit: contain;
+      object-position: center;
+      width: 54px;
+      margin-top: 45px;
+    }
+    
+    @media (max-width: 991px) {
+      .blog-nav-dots {
+        margin-top: 40px;
+      }
+    }
+    
+    .highlight {
+      color: #fa7436;
+    }
+    
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    </style>
+    
+    <section class="blog-section">
+      <div class="blog-background">
+        <div class="blog-content">
+          <h2 class="blog-title">Get update with <span class="highlight">latest blog</span></h2>
+          <div class="blog-grid">
+            <div class="blog-row">
+              <article class="blog-column">
+                <div class="blog-card">
+                  <img src="Blog 1.png" alt="Blog post image about travelling for a year" class="blog-image" />
+                  <h3 class="blog-card-title">The Amazing Difference a </br> Year of Travelling.</h3>
+                  <time datetime="2021-07-27" class="blog-date">July 27, 2021</time>
+                </div>
+              </article>
+              <article class="blog-column">
+                <div class="blog-card">
+                  <img src="Blog 2.png" alt="Blog post image about self-discovery through travel" class="blog-image" />
+                  <h3 class="blog-card-title">Travel far enough, you</br> meet yourself.</h3>
+                  <time datetime="2021-07-27" class="blog-date">July 27, 2021</time>
+                </div>
+              </article>
+              <article class="blog-column">
+                <div class="blog-card">
+                  <img src="Blog 3.png" alt="Blog post image about saving money while visiting Africa" class="blog-image" />
+                  <h3 class="blog-card-title">How to Save Money While </br>Visiting Africa.</h3>
+                  <time datetime="2021-07-27" class="blog-date">July 27, 2021</time>
+                </div>
+              </article>
+              <article class="blog-column">
+                <div class="blog-card">
+                  <img src="Blog 4.png" alt="Blog post image about reflections on 5 months of travel" class="blog-image" />
+                  <h3 class="blog-card-title">Reflections on 5 Months of </br>Travel: Time to Hang</h3>
+                  <time datetime="2021-07-27" class="blog-date">July 27, 2021</time>
+                </div>
+              </article>
+            </div>
+          </div>
+          <img src="Slider.png" alt="" class="blog-nav-dots" />
+        </div>
+      </div>
+    </section>
+
+    <style>
+        .footer { border-radius: 0; display: flex; flex-direction: column; }
+        .newsletter-bg { border-radius: 16px; background-color: #fa7436; align-self: center; z-index: 10; display: flex; width: 1170px; max-width: 100%; flex-direction: column; padding: 9px 2px 0; }
+        .newsletter-content { display: flex; flex-direction: column; position: relative; min-height: 407px; align-items: center; justify-content: center; padding: 76px 80px; }
+        @media (max-width: 991px) { .newsletter-content { max-width: 100%; padding: 0 20px; } }
+        .newsletter-bg-image { position: absolute; inset: 0; height: 100%; width: 100%; object-fit: cover; object-position: center; }
+        .newsletter-text-container { position: relative; display: flex; margin-left: 40px; width: 674px; max-width: 100%; flex-direction: column; }
+        .newsletter-title { color: #fff; text-align: center; margin: 0 12px 0 17px; font: 700 48px Volkhov, sans-serif; }
+        @media (max-width: 991px) { .newsletter-title { max-width: 100%; margin-right: 10px; font-size: 40px; } }
+        .newsletter-form { border-radius: 10px; background-color: #fff; display: flex; margin-top: 64px; width: 100%; gap: 20px; flex-wrap: wrap; justify-content: space-between; padding: 9px 9px 9px 22px; font: 400 16px Poppins, sans-serif; }
+        @media (max-width: 991px) { .newsletter-form { max-width: 100%; padding-left: 20px; margin-top: 40px; } }
+        .input-wrapper { display: flex; gap: 8px; color: #999; margin: auto 0; }
+        .email-icon { aspect-ratio: 1.19; object-fit: contain; object-position: center; width: 19px; border-radius: 0; margin: auto 0; }
+        .subscribe-btn { border-radius: 8px; background-color: #fa7436; color: #fff; white-space: nowrap; padding: 13px 26px; }
+        @media (max-width: 991px) { .subscribe-btn { white-space: initial; padding: 0 20px; } }
+        .footer-bg { background-color: #f7f8fc; display: flex; width: 100%; flex-direction: column; align-items: center; padding: 326px 80px 48px; }
+        @media (max-width: 991px) { .footer-bg { max-width: 100%; padding: 100px 20px 0; } }
+        .footer-content { display: flex; width: 1172px; max-width: 100%; flex-direction: column; }
+        @media (max-width: 991px) { .footer-columns { max-width: 100%; margin-right: 3px; } }
+        .footer-row { gap: 20px; display: flex; }
+        @media (max-width: 991px) { .footer-row { flex-direction: column; align-items: stretch; gap: 0; } }
+        .footer-column { display: flex; flex-direction: column; line-height: normal; width: 47%; margin-left: 0; }
+        @media (max-width: 991px) { .footer-column { width: 100%; } }
+        .brand-info { display: flex; width: 100%; flex-direction: column; align-items: flex-start; }
+        @media (max-width: 991px) { .brand-info { margin-top: 40px; } }
+        .brand-header { display: flex; gap: 10px; color: #222; white-space: nowrap; letter-spacing: 0.14px; font: 700 24px/1 Volkhov, Bold; }
+        @media (max-width: 991px) { .brand-header { white-space: initial; } }
+        .brand-name { flex-grow: 1; }
+        .brand-icon { aspect-ratio: 1; object-fit: contain; object-position: center; width: 19px; fill: #666; margin: auto 0; }
+        .brand-description { color: #666; align-self: stretch; margin-top: 24px; font: 500 16px/32px Poppins, regular; }
+        .social-icons { aspect-ratio: 3.66; object-fit: contain; object-position: center; width: 176px; margin-top: 16px; max-width: 100%; }
+        .footer-nav-column { display: flex; flex-direction: column; line-height: normal; width: 17%; margin-left: 20px; }
+        @media (max-width: 991px) { .footer-nav-column { width: 100%; } }
+        .footer-nav { display: flex; flex-direction: column; align-items: flex-start; color: #666; white-space: nowrap; font: 400 18px/1 Poppins, regular; }
+        @media (max-width: 991px) { .footer-nav { margin-top: 40px; white-space: initial; } }
+        .footer-nav-title { color: #222; font-weight: 600; align-self: stretch; }
+        .footer-nav-item { margin-top: 16px; }
+        .footer-nav-item:first-of-type { margin-top: 32px; }
+        .privacy-policy { color: #666; align-self:center; margin: 8px 0 0 55px; font: 400 18px/1 Poppins, regular; }
+        .footer-divider { margin-top: 39px; width: 100%; height: 1px; border: 1px solid rgba(153, 153, 153, 0.56); }
+        .footer-bottom { display: flex; margin-top: 40px; gap: 20px; color: #666; flex-wrap: wrap; justify-content: space-between; font: 400 16px Poppins, regular; }
+        @media (max-width: 991px) { .footer-bottom { max-width: 100%; } }
+        .copyright, .terms-conditions { opacity: 0.8; }
+        .terms-conditions { text-align: right; }
+        .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+        </style>
+        
+        <footer class="footer">
+          <section class="newsletter-bg">
+            <div class="newsletter-content">
+              <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/9725052ba14d721a11311c420fd6ec9ea80747f8544c5a872fba8c2a9b0431de?placeholderIfAbsent=true&apiKey=a311e37a7d0b4899ad613ce1a7513e53" class="newsletter-bg-image" alt="" />
+              <div class="newsletter-text-container">
+                <h2 class="newsletter-title">Subscribe and get exclusive deals & offer</h2>
+                <form class="newsletter-form">
+                  <div class="input-wrapper">
+                    <img loading="lazy" src="Email Box.png" class="email-icon" alt="Email icon" />
+                    <h5>Enter your Mail</h5>
+                    </div>
+                  <button type="submit" class="subscribe-btn">Subscribe</button>
+                </form>
+              </div>
+            </div>
+          </section>
+          
+          <div class="footer-bg">
+            <div class="footer-content">
+              <div class="footer-columns">
+                <div class="footer-row">
+                  <div class="footer-column">
+                    <div class="brand-info">
+                      <div class="brand-header">
+                        <span class="brand-name">Trabook</span>
+                        <img loading="lazy" src="Vector (2).png" class="brand-icon" alt="Trabook icon" />
+                      </div>
+                      <p class="brand-description">
+                        Book your trip in minute, get full<br />
+                        Control for much longer.
+                      </p>
+
+                      <div>
+                      <image src="Facebook.png"></image>
+                      <image src="Instagram.png"></image>
+                      <image src="Twitter.png"></image>
+                      </div>
+                      
+                      
+                
+                    </div>
+                  </div>
+                  <nav class="footer-nav-column">
+                    <ul class="footer-nav">
+                      <li class="footer-nav-title">Company</li>
+                      <li class="footer-nav-item">About</li>
+                      <li class="footer-nav-item">Careers</l>
+                      <li class="footer-nav-item">Logistic</li>
+                    </ul>
+                  </nav
+                  class="footer-nav-column">
+                    <ul class="footer-nav">
+                      <li class="footer-nav-title">Contact</li>
+                      <li class="footer-nav-item">Help/FAQ</li>
+                      <li class="footer-nav-item">Press</li>
+                      <li class="footer-nav-item">Affilates</li>
+                    </ul>
+                  </nav>
+                  <nav class="footer-nav-column">
+                    <ul class="footer-nav">
+                      <li class="footer-nav-title">More</li>
+                      <li class="footer-nav-item">Press Centre</li>
+                      <li class="footer-nav-item">Our Blog</li>
+                      <li class="footer-nav-item">Low fare tips</li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            
+              <a class="privacy-policy"> Privacy & Policy</a>
+            
+              <hr class="footer-divider" />
+              <div class="footer-bottom">
+                <p class="copyright">Copyright, Trabook 2022. All rights reserved.</p>
+                <a class="terms-conditions">Terms & Conditions</a>
+              </div>
+            </div>
+          </div>
+        </footer>
